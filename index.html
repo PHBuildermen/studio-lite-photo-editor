@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Lite Photo Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Top Navbar -->
+        <header class="navbar">
+            <div class="logo">
+                <h1>Studio Lite</h1>
+            </div>
+            <div class="actions">
+                <button id="uploadBtn"><i class="fas fa-upload"></i> Upload</button>
+                <button id="downloadPNG"><i class="fas fa-download"></i> PNG</button>
+                <button id="downloadJPG"><i class="fas fa-download"></i> JPG</button>
+                <button id="resetBtn"><i class="fas fa-undo"></i> Reset</button>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <!-- Left Toolbar -->
+            <aside class="left-toolbar">
+                <button class="tool-btn active" data-tool="select" title="Select"><i class="fas fa-hand-pointer"></i></button>
+                <button class="tool-btn" data-tool="crop" title="Crop"><i class="fas fa-crop-alt"></i></button>
+                <button class="tool-btn" data-tool="text" title="Add Text"><i class="fas fa-font"></i></button>
+                <button class="tool-btn" data-tool="sticker" title="Stickers"><i class="fas fa-smile"></i></button>
+                <button class="tool-btn" data-tool="rotate" title="Rotate"><i class="fas fa-redo"></i></button>
+                <button class="tool-btn" data-tool="flipH" title="Flip Horizontal"><i class="fas fa-arrows-alt-h"></i></button>
+                <button class="tool-btn" data-tool="flipV" title="Flip Vertical"><i class="fas fa-arrows-alt-v"></i></button>
+            </aside>
+
+            <!-- Canvas Area -->
+            <div class="canvas-container" id="canvasContainer">
+                <canvas id="mainCanvas" width="800" height="600"></canvas>
+                <div id="dropZone" class="drop-zone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop image here<br>or click to upload</p>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <aside class="right-panel">
+                <h3>Adjustments</h3>
+                <div class="slider-group">
+                    <label>Brightness <span id="brightVal">100</span>%</label>
+                    <input type="range" id="brightness" min="50" max="150" value="100">
+                </div>
+                <div class="slider-group">
+                    <label>Contrast <span id="contrastVal">100</span>%</label>
+                    <input type="range" id="contrast" min="50" max="150" value="100">
+                </div>
+                <div class="slider-group">
+                    <label>Saturation <span id="saturateVal">100</span>%</label>
+                    <input type="range" id="saturate" min="0" max="200" value="100">
+                </div>
+                <div class="slider-group">
+                    <label>Blur <span id="blurVal">0</span>px</label>
+                    <input type="range" id="blur" min="0" max="20" value="0" step="0.5">
+                </div>
+
+                <h3>Filters</h3>
+                <div class="filter-grid">
+                    <button class="filter-btn" data-filter="none">Original</button>
+                    <button class="filter-btn" data-filter="grayscale">Grayscale</button>
+                    <button class="filter-btn" data-filter="sepia">Sepia</button>
+                    <button class="filter-btn" data-filter="invert">Invert</button>
+                </div>
+
+                <button id="undoBtn"><i class="fas fa-undo"></i> Undo</button>
+                <button id="redoBtn"><i class="fas fa-redo"></i> Redo</button>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Text Input Modal -->
+    <div id="textModal" class="modal">
+        <div class="modal-content">
+            <h3>Add Text</h3>
+            <input type="text" id="textInput" placeholder="Type your text">
+            <input type="color" id="textColor" value="#ffffff">
+            <div class="modal-buttons">
+                <button id="cancelText">Cancel</button>
+                <button id="addTextBtn">Add to Image</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
